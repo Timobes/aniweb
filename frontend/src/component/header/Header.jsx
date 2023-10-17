@@ -2,10 +2,13 @@ import { useState, useEffect } from "react"
 import { Link, Outlet } from "react-router-dom"
 import axios from "axios"
 import { useSelector} from 'react-redux'
+import Search from "./search/Search"
+import Admain from "../main/adpanel/Admain"
 
 
 function Header() {
     const [data, setData] = useState()
+
     const status = useSelector((state) => state.auth.value)
 
     useEffect(() => {
@@ -24,17 +27,14 @@ function Header() {
     },[status])
 
 
-
     return (  
         <>
             <header className="header">
                 <div className="logo">
                     <Link to="/main">アニ AniWeb</Link>
                 </div>
-                <div className="search">
-                    <input type="text" placeholder="Поиск" />
-                    <img src="" alt="" />
-                </div>
+
+                <Search />
                 
                 <div className="profile">
                         {data 
@@ -47,6 +47,10 @@ function Header() {
                     <Link to="/Catalog">Catalog</Link>
                     <hr />
                     <Link to="/users">Users</Link>
+                </div>
+
+                <div>
+                    <Link to="/adminpanel">admin panel</Link>
                 </div>
             </header>
             <Outlet />

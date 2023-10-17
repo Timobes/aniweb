@@ -14,6 +14,9 @@ import Addbook from "./component/main/bookmarks/Addbook";
 import Bookmarks from "./component/main/bookmarks/Bookmarks";
 import Anitags from "./component/main/anime/Anitags";
 import Users from "./component/main/user/Users"
+import Admain from "./component/main/adpanel/Admain";
+import Sendview from "./component/main/anime/SendReview";
+import Loadtag from "./component/main/adpanel/anime/Loadtags";
 
 function Rout() {
     return (  
@@ -26,6 +29,7 @@ function Rout() {
 
                     <Route path="/catalog/:id" element={<OneAnime />} />
                     <Route path="/catalog/:id" element={<Review />} />
+                    <Route path="/catalog/:id" element={<Sendview />} />
                     <Route path="/catalog/:id" element={<Addbook />} />
                     <Route path="/catalog/:id" element={<Anitags />} />
                     
@@ -39,6 +43,9 @@ function Rout() {
                     <Route path="/bookmarks" element={<Bookmarks />} />
 
                     <Route path="/users" element={<Users />} />
+
+                    <Route path="/adminpanel" element={<Admain />} />
+                    <Route path="/adminpanel/loadtags" element={<Loadtag />} />
                     
                     <Route path="*" element={<h1>Error!!!</h1>}/>
                 </Route>

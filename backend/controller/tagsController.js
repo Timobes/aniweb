@@ -45,6 +45,17 @@ class tagController {
                                 GROUP BY ani.name`, [id])        
         res.json(btn.rows)
     }
+
+    async createTagsAnime(req, res) {
+        const id = req.params.id
+        const {tags} = req.body
+
+        const data = tags.map((tags) => [tags.id])  
+
+        const cre = await db.query('INSERT INTO pretags (animeid, tagsid) VALUES ($1, $2)', [id, data])
+
+        res.json(cre.rows)
+    }
 }
 
 module.exports = new tagController;

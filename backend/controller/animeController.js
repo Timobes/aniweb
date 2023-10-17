@@ -14,12 +14,16 @@ class animeController {
     res.json(anime.rows[0]);
   }
 
-  async createAnime(req, res) {
-    const { animeurl, studiourl, name, altername, description, rating, numEp, dates } = req.body;
-    const newAnime = await db.query(`INSERT INTO anime (animeurl, studiourl, name, altername, description, rating, numEp, dates) values ($1, $2, $3, $4, $5, $6, $7, $8)`, 
-      [animeurl, studiourl, name, altername, description, rating, numEp, dates]
-    );
-    res.json(newAnime.rows[0]);
+  async createAnime(req, res, next) {
+    try {
+      const { animeurl, studiourl, name, altername, description, rating, numep, dates } = req.body;
+        const newAnime = await db.query(`INSERT INTO anime (animeurl, studiourl, name, altername, description, rating, numep, dates) values ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`,
+          [animeurl, studiourl, name, altername, description, rating, numep, dates]
+        );
+        res.json(newAnime.rows[0]);
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   async deleteAnime(req, res) {
@@ -36,11 +40,12 @@ class animeController {
   async getRev(req, res) {
     const id = req.params.id
     const rev = await db.query(`
-      SELECT ani.name, ar.review, us.username 
+      SELECT ar.id, ani.name, ar.review, us.username 
 	      FROM anime ani
 		      JOIN animerev ar ON animeid = ani.id
 			      JOIN users us ON ar.author = us.id
-				      WHERE ani.id = $1`, [id])
+				      WHERE ani.id = $1
+                ORDER BY ar.id DESC`, [id])
     res.json(rev.rows)
   }
 
@@ -52,6 +57,14 @@ class animeController {
     const send = await db.query('INSERT INTO	animerev(animeid, author, review) VALUES ($1, $2, $3)', [id, user, review])
     
     res.json(send.rows)
+  }
+
+  async delRev(req, res) {
+    const id = req.params.id
+    const user = req.cookies.userid
+
+    const del = await db.query('DELETE FROM animerev WHERE id = $1 AND author = $2', [id, user])
+    res.json('Отзыв удалён')
   }
 
 }

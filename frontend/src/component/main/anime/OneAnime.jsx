@@ -5,6 +5,7 @@ import axios from "axios";
 import Review from "./Review";
 import Addbook from "../bookmarks/Addbook";
 import Anitags from "./Anitags";
+import Sendview from "./SendReview";
 
 function OneAnime() {
 
@@ -23,7 +24,7 @@ function OneAnime() {
             .catch((error) => {
                 console.log('Ошибка : ',error)
             })
-    }, [id])
+    }, [])
 
     return (  
         <>       
@@ -55,6 +56,9 @@ function OneAnime() {
                     <h1>Описание</h1>
                     <p>{data.description}</p>
                 </div>
+
+                <div className="rew-h">Оставить отзыв</div>
+                <Sendview />
 
                 <div className="rew-h">Отзывы</div>
                 <Review />

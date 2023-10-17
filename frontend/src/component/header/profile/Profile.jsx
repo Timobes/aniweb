@@ -1,13 +1,10 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Bookmarks from "../../main/bookmarks/Bookmarks";
-// import {Link, useParams} from "react-router-dom"
 import Exit from "./auth-Reg/Exit";
 import { useSelector} from 'react-redux'
 
-
 function Profile() {
-    // const {id} = useParams()
     const [data, setData] = useState([])
     const status = useSelector((state) => state.auth.value)
 
@@ -37,6 +34,12 @@ function Profile() {
                             <h2>Имя: {data.username}</h2>
                             <h2>Описание: {data.bio}</h2>
                             <h2>Дата регистрации: {new Date(data.dates).toLocaleDateString()}</h2>
+                            <h2>Статус{
+                                data.isadmin
+                                    ? <h2>Админ</h2>
+                                    : <h2>Пользователь</h2>
+                            }</h2>
+
 
                             <Exit />
                             <Bookmarks />

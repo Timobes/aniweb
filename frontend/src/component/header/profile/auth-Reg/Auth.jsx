@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from 'axios'
 import { useSelector, useDispatch } from 'react-redux'
 import {addauth} from '../../../../state/slice/authSlice' 
-// import { useNavigate } from "react-router-dom";
+import Cookies from 'js-cookie'
 
 function Auth() {
 
@@ -13,9 +13,10 @@ function Auth() {
     const status = useSelector((state) => state.auth.value)
     const dispatch = useDispatch()
 
-    console.log('status = ',status)
-    // const nav = useNavigate()
+    const cook = Cookies.get('userid')
+    // console.log('cook = ', cook > 0)
 
+    console.log('status = ',status)
         const submit = () => { 
             axios
                 .post("http://localhost:8080/api/auth/auth", {
@@ -33,7 +34,7 @@ function Auth() {
                     setData(response.data)
                     console.log(response)
 
-                    if(response.status === 200) {
+                    if(response.status === 200 && cook > 0) {
                         dispatch(addauth())
                     }
                 })

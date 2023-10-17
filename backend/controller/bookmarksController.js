@@ -30,15 +30,23 @@ class bookController {
     }
 
     async remBook(req, res) {
-        if (req.cookies.userid) {
-            const id = req.cookies.userid
-            const animeid = req.params.id
-            const rem = await db.query('', [id, animeid])
+        try {
+            if (req.cookies.userid) {
+                const id = req.cookies.userid
+                const animeid = req.params.id
 
-            res.json(rem.rows)
-        } else {
-            res.json('вы не авторизированы!')
+                console.log('id = ', id, 'anime = ', animeid)
+
+                const rem = await db.query('DELETE FROM bookmarks WHERE userid = $1 AND animeid = $2', [id, animeid])
+
+                res.json(rem.rows)
+            } else {
+                res.json('вы не авторизированы!')
+            }
+        } catch (err) {
+            console.log(err)
         }
+
     }
 }
 
