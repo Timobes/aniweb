@@ -30,7 +30,7 @@ class animeController {
   }
 
   async updateAnime(req, res) {
-
+    // 
   }
 
   async getRev(req, res) {

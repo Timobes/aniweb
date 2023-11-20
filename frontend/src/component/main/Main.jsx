@@ -1,12 +1,9 @@
-import Reg from "../reg/Reg";
-
+// import Layout from "../../Layout";
 
 function Main() {
     return (  
-        <>
-            <h1>Main</h1>
-            <Reg />
-        </>
+        <h1>Main</h1>
+        
     );
 }
 
