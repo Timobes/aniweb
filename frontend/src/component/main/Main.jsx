@@ -7,15 +7,15 @@ function Main() {
         <>
             <div className="main">
 
-                <div class="block-name">Новинки</div>
+                <div className="block-name">Новинки</div>
                 
                 <Anime />
                 
-                <div class="block-name">Новости</div>
+                <div className="block-name">Новости</div>
                 
                 <News />
 
-                <div class="block-name">Анонсы</div>
+                <div className="block-name">Анонсы</div>
                 
                 <Anons />
             </div>  

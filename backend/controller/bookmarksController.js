@@ -18,8 +18,10 @@ class bookController {
             const animeid = req.params.id
             const add = await db.query("INSERT INTO bookmarks(userid, animeid) VALUES ($1, $2)", [id, animeid])
             res.json(add.rows)
-        }   else {
+        }   
+        else {
             res.json('вы не авторизированы!')
+            console.log(req.cookies.userid)
         }
     }
 

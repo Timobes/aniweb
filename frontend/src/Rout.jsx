@@ -12,6 +12,10 @@ import OneAnime from "./component/main/anime/OneAnime";
 import Header from "./component/header/Header";
 import AniNews from "./component/main/news/AniNews";
 import AniAnons from "./component/main/anons/AniAnons";
+import Reg from "./component/header/profile/auth-Reg/Reg";
+import Auth from "./component/header/profile/auth-Reg/Auth";
+import Review from "./component/main/anime/Review";
+import Addbook from "./component/main/bookmarks/Addbook";
 
 
 
@@ -25,10 +29,18 @@ function Rout() {
                     <Route path="/catalog" element={<Catalog />} />
 
                     <Route path="/catalog/:id" element={<OneAnime />} />
+                    <Route path="/catalog/:id" element={<Review />} />
+                    <Route path="/catalog/:id" element={<Addbook />} />
+
+
 
                     <Route path="/news/:id" element={<AniNews />} />
                     
                     <Route path="/anons/:id" element={<AniAnons />} />
+
+                    <Route path="/reg" element={<Reg />} />
+                    <Route path="/auth" element={<Auth />} />
+
                     
                     <Route path="*" element={<h1>Error!!!</h1>}/>
                 </Route>

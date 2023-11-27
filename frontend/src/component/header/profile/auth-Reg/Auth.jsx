@@ -1,44 +1,37 @@
 import { useState } from "react";
 import axios from 'axios'
-// import { useNavigate } from "react-router-dom";
 
 function Auth() {
 
     const [data, setData] = useState([])
     const [email, setEmail] = useState()
-    const [password, setPassword] = useState()
-
-    // const navigate = useNavigate()
+    const [passwords, setPasswords] = useState()
 
         const submit = () => { 
             axios
-            .post("http://localhost:8080/api/user/auth", {
-                headers: {
-                    "Content-type": "application/json",
-                },
-                email: email,
-                password: password,
-            }, 
-            {withCredentials: true})
+                .post("http://localhost:8080/api/auth/auth", {
+                    headers: {
+                        "Content-type": "application/json",
+                    },
+                    email: email,
+                    passwords: passwords,
+                }, 
+                {withCredentials: true})
 
-            .then((response) => {
-                setData(response.data)
+                .then((response) => {
+                    setData(response.data)
+                })
 
-                // if(response.status === 200){
-                //     // navigate('/main')
-                // }
-            })
-
-            .catch((error) =>  {
-                console.log('Ошибка : ',error)
-            })
+                .catch((error) =>  {
+                    console.log('Ошибка : ',error)
+                })
       }
-      console.log('email, password = ', email, password)
+      console.log('email, password = ', email, passwords)
       
     return (  
         <div className="">
             <input type="email" placeholder="email" onChange={e => setEmail(e.target.value)} /> <br />
-            <input type="password" placeholder="password" onChange={e => setPassword(e.target.value)} /> <br />
+            <input type="password" placeholder="password" onChange={e => setPasswords(e.target.value)} /> <br />
             <div className="" >
                 {data}
             </div>

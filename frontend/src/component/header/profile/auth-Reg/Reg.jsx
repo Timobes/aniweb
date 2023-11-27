@@ -3,24 +3,27 @@ import axios from 'axios'
 
 function Reg() {
     const [data, setData] = useState([])
-    const [nickname, setNickname] = useState()
+
+    const [username, setUsername] = useState()
     const [email, setEmail] = useState()
-    const [password, setPassword] = useState()
-    const [age, setAge] = useState()
+    const [passwords, setPasswords] = useState()
+    const [bio, setBio] = useState()
+    const [dates] = useState(new Date()) 
+
 
     const submit = () => {
         axios
-            .post("http://localhost:8080/api/user/reg", {
-                nickname: nickname,
-                email: email,
-                password: password,
-                age: age
-            })            
+            .post("http://localhost:8080/api/auth/reg", {
+                username: username, 
+                email: email, 
+                passwords: passwords, 
+                bio: bio, 
+                dates: dates
+            })
             
             .then((response) => {
                 console.log(response)
                 setData(response)
-                // window.location.reload()
             })
             
             .catch((error) => {
@@ -28,12 +31,18 @@ function Reg() {
             })
     }; 
 
+
+
     return (  
         <div className="">
-            <input type="text" placeholder="nickname" onChange={e => setNickname(e.target.value)} /> <br />
+            <input type="text" placeholder="username" onChange={e => setUsername(e.target.value)} /> <br />
+            
             <input type="email" placeholder="email" onChange={e => setEmail(e.target.value)} /> <br />
-            <input type="password" placeholder="password" onChange={e => setPassword(e.target.value)} /> <br />
-            <input type="number" placeholder="age" onChange={e => setAge(e.target.value)} /> <br />
+
+            <input type="password" placeholder="password" onChange={e => setPasswords(e.target.value)} /> <br />
+
+            <input type="text" placeholder="bio" onChange={e => setBio(e.target.value)} /> <br />
+            
             <div className="" >
                 {data.data}
             </div>
