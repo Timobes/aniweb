@@ -33,6 +33,18 @@ class tagController {
 
         res.json(rename.rows)
     }
+
+    async tagsAnime (req, res) {
+        const id = req.params.id
+        const btn = await db.query(`
+            SELECT ani.name AS anime_name, json_agg(tag.name) AS tags 
+                FROM anime ani 
+                    INNER JOIN pretags pre ON pre.animeid = ani.id 
+                        INNER JOIN tags tag ON pre.tagsid = tag.id 
+                            WHERE ani.id = $1
+                                GROUP BY ani.name`, [id])        
+        res.json(btn.rows)
+    }
 }
 
 module.exports = new tagController;

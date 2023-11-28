@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Bookmarks from "../../main/bookmarks/Bookmarks";
+import {Link} from "react-router-dom"
+import Exit from "./auth-Reg/Exit";
 
 function Profile() {
     const [data, setData] = useState([])
@@ -25,17 +28,19 @@ function Profile() {
     return (  
         <div>
             {
-                data.length > 0
+                data != null
                     ? 
-                        data.map((user) => 
-                            <>
-                                <h2>Nickname = {user.username}</h2>
-                                <h2>Email = {user.email}</h2>
+                        <>
+                            <h2>Имя: {data.username}</h2>
+                            <h2>Описание: {data.bio}</h2>
+                            <h2>Дата регистрации: {data.dates}</h2>
+                            <Exit />
+                            <Bookmarks />
 
-                            </>
-                        )
+                        </>
                     :
                         <h1>Вы не вошли в аккаунт!</h1>
+                            
             }
         </div>
     );

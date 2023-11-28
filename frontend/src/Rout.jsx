@@ -1,10 +1,5 @@
-import {
-    BrowserRouter,
-    Route,
-    Routes
-} from "react-router-dom";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 
-// import App from "./App";
 import Main from "./component/main/Main";
 import Profile from "./component/header/profile/Profile";
 import Catalog from "./component/main/Catalog";
@@ -16,8 +11,8 @@ import Reg from "./component/header/profile/auth-Reg/Reg";
 import Auth from "./component/header/profile/auth-Reg/Auth";
 import Review from "./component/main/anime/Review";
 import Addbook from "./component/main/bookmarks/Addbook";
-
-
+import Bookmarks from "./component/main/bookmarks/Bookmarks";
+import Anitags from "./component/main/anime/Anitags";
 
 function Rout() {
     return (  
@@ -31,9 +26,8 @@ function Rout() {
                     <Route path="/catalog/:id" element={<OneAnime />} />
                     <Route path="/catalog/:id" element={<Review />} />
                     <Route path="/catalog/:id" element={<Addbook />} />
-
-
-
+                    <Route path="/catalog/:id" element={<Anitags />} />
+                    
                     <Route path="/news/:id" element={<AniNews />} />
                     
                     <Route path="/anons/:id" element={<AniAnons />} />
@@ -41,6 +35,7 @@ function Rout() {
                     <Route path="/reg" element={<Reg />} />
                     <Route path="/auth" element={<Auth />} />
 
+                    <Route path="/bookmarks" element={<Bookmarks />} />
                     
                     <Route path="*" element={<h1>Error!!!</h1>}/>
                 </Route>

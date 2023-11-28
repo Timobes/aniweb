@@ -56,8 +56,20 @@ class regController {
 
     async getCook(req, res) {
         const id = req.cookies.userid
-        const username = await db.query('SELECT username FROM users WHERE id = $1 ', [id])
-        res.send(`Hello ${username.rows[0].username}!`);
+        if(id) {
+            const username = await db.query('SELECT username FROM users WHERE id = $1 ', [id])
+            res.send(`Hello ${username.rows[0].username}!`);
+        }
+        else {
+            console.log('Вы не авторизованы!')
+        }
+    }
+
+    async exit(req, res){
+        // const id = req.cookies.userid
+
+        res.clearCookie('userid');
+        res.json('Вы вышли!')
     }
 }
 

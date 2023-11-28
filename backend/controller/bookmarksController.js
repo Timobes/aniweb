@@ -5,7 +5,11 @@ class bookController {
     async getBook(req, res) {
         if (req.cookies.userid) {
             const id = req.cookies.userid
-            const get = await db.query(`SELECT * FROM bookmarks WHERE userid = $1`, [id])
+            const get = await db.query(`
+                SELECT * from bookmarks
+                    INNER JOIN  users ON bookmarks.userid = users.id 
+                        INNER JOIN  anime ON bookmarks.animeid = anime.id
+                            WHERE users.id = $1`, [id])
             res.json(get.rows)
         } else {
             res.json('вы не авторизированы!')

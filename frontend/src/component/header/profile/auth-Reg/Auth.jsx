@@ -19,6 +19,8 @@ function Auth() {
                 {withCredentials: true})
 
                 .then((response) => {
+                    window.location.reload()
+
                     setData(response.data)
                 })
 

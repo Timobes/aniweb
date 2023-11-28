@@ -3,7 +3,6 @@ import { Link, Outlet } from "react-router-dom"
 import axios from "axios"
 
 function Header() {
-
     const [data, setData] = useState()
 
     useEffect(() => {
@@ -21,35 +20,26 @@ function Header() {
             })
     }, [])
 
-    console.log(data)
-
     return (  
         <>
             <header className="header">
                 <div class="logo">
                     <Link to="/main">アニ AniWeb</Link>
                 </div>
-
                 <div className="search">
                     <input type="text" placeholder="Поиск" />
                     <img src="" alt="" />
                 </div>
-
                 <div className="profile">
-                    {
-                        data 
-                            ?
-                                <Link to="/profile" data={data}>{data}</Link>
-                            :
-                                <h1>Вы не авторизированы!</h1>
+                    {data 
+                        ?<Link to="/profile" data={data}>{data}</Link>
+                        :<><Link to={"/reg"}>Регистрация</Link><div> - </div><Link to={"/auth"}>Авторизация</Link></>
                     }
                 </div>
-
                 <div className="burger">
                     <Link to="/Catalog">Catalog</Link>
                 </div>
             </header>
-
             <Outlet />
         </>
     );

@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import Review from "./Review";
 import Addbook from "../bookmarks/Addbook";
+import Anitags from "./Anitags";
 
 function OneAnime() {
 
@@ -37,7 +38,7 @@ function OneAnime() {
                     
                     <p>Информация</p>
 
-                    <div className="genres">Жанр: драма, ужасы</div>
+                    <div className="genres">Жанры: <Anitags /></div>
                     <div className="year">Дата выхода: {data.dates}</div>
                     <div className="col-anime">Кол-во эпизодов: {data.numep}</div>
                     <div className="rating">Рейтинг: {data.rating}</div>
