@@ -240,3 +240,187 @@ a:visited {
     font-weight: 400;
     line-height: normal;
 }
+
+
+/* One anime */
+
+
+.oneanime {
+    padding: 50px;
+}
+
+.aniname {
+    color: #FFF9F9;
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.animg {
+    width: 400px;
+    height: 500px;
+}
+
+.info {
+    position: relative;
+    bottom: 530px;
+    left: 480px;
+    width: 480px;
+}
+
+.info > p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #FFF;
+
+    width: 280px;
+    height: 30px;
+
+    background-color: #2A2A2A;
+}
+
+.info div {
+    color: #FFF;
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.genres {
+
+}
+
+.year {
+
+}
+
+.col-anime {
+
+}
+
+.rating {
+
+}
+
+.alt-name {
+
+}
+
+.studio {
+    position: relative;
+    bottom: 805px;
+    left: 1200px;
+
+    width: 200px;
+}
+
+.studio > p {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #2A2A2A;
+
+    width: 280px;
+    height: 30px;
+
+    color: #fff;
+}
+
+.studio-img {
+    width: 280px;
+    /* height: 100px; */
+}
+
+.bookmarks {
+    width: 320px;
+    height: 60px;
+
+    border-radius: 25px;
+    background: #2A2A2A;
+    border: 2px solid #2A2A2A;
+    color: #fff;
+
+    position: relative;
+    top: 60px;
+    right: 370px;
+}
+
+.bookmarks:hover {
+    cursor: pointer;
+}
+
+.desc {
+    position: relative;
+    bottom: 180px;
+    color: #FFF;
+}
+
+.desc h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 1780px;
+    background: #2A2A2A;
+    text-align: center;
+    color: #FFF;
+
+    color: #FFF;
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.desc p {
+    color: #FFF;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+    /* padding: 25px; */
+    width: 1780px;
+
+    background-color: #454545;;
+}
+
+.rew-h {
+    color: #FFF;
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.review-block {
+    width: 1603px;
+    height: 150px;
+}
+
+.review {
+    padding: 20px;
+    width: 1600px;
+    background: rgba(0, 0, 0, 0.30);
+    margin-bottom: 50px;
+}
+
+.rev-img {
+
+}
+
+.rev-name {
+    display: flex;
+    align-items: center;
+}
+
+.rev-name
+
+.rev-text {
+
+}

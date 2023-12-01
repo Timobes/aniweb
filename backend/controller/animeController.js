@@ -16,7 +16,7 @@ class animeController {
 
   async createAnime(req, res) {
     const { animeurl, studiourl, name, altername, description, rating, numEp, dates } = req.body;
-    const newAnime = await db.query(`INSERT INTO anime (animeurl, studiourl, name, altername, description, rating, numEp, dates) values ($1, $2, $3, $4, $5, $6, $7)`, 
+    const newAnime = await db.query(`INSERT INTO anime (animeurl, studiourl, name, altername, description, rating, numEp, dates) values ($1, $2, $3, $4, $5, $6, $7, $8)`, 
       [animeurl, studiourl, name, altername, description, rating, numEp, dates]
     );
     res.json(newAnime.rows[0]);
@@ -24,9 +24,9 @@ class animeController {
 
   async deleteAnime(req, res) {
     const id = req.params.id;
-    const user = await db.query("DELETE from anime WHERE id = $1", [id]);
+    const anime = await db.query("DELETE from anime WHERE id = $1", [id]);
 
-    res.json(user.rows[0], "пользователь удалён");
+    res.json(anime.rows[0]);
   }
 
   async updateAnime(req, res) {

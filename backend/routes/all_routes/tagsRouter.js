@@ -8,5 +8,6 @@ tagsRouter.get('/tag/:id', tagsController.getOneTag)
 tagsRouter.post('/tag/create', tagsController.createTag)
 tagsRouter.post('/tag/del', tagsController.createTag)
 tagsRouter.put('/tags/up/:id', tagsController.renameTag)
+tagsRouter.get('/anitags/:id', tagsController.tagsAnime)
 
 module.exports = tagsRouter;

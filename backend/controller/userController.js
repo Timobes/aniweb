@@ -7,7 +7,8 @@ class userController {
     }
 
     async getOneUser(req, res) {
-        const id = req.params.id
+        // const id = req.params.id
+        const id = req.cookies.userid
         const user = await db.query("select * from users where id = $1", [id]);
 
         res.json(user.rows[0])

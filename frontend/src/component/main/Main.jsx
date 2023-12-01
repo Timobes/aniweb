@@ -1,4 +1,4 @@
-import Anime from "./anime/Anime";
+import Mainanime from "./anime/Mainanime";
 import Anons from "./anons/Anons";
 import News from "./news/News";
 
@@ -7,20 +7,19 @@ function Main() {
         <>
             <div className="main">
 
-                <div class="block-name">Новинки</div>
+                <div className="block-name">Новинки</div>
                 
-                <Anime />
+                <Mainanime />
                 
-                <div class="block-name">Новости</div>
+                <div className="block-name">Новости</div>
                 
                 <News />
 
-                <div class="block-name">Анонсы</div>
+                <div className="block-name">Анонсы</div>
                 
                 <Anons />
             </div>  
         </>
-
     );
 }
 
