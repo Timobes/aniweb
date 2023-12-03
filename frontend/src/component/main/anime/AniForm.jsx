@@ -23,7 +23,7 @@ function AniForm() {
         <div className="new">
             {
                 data.map((anime) => 
-                    <Link to={`/catalog/${anime.id}`}>
+                    <Link to={`/catalog/${anime.id}`} key={anime.id}>
                         <div className="anime-block">
                             <img src={anime.animeurl} alt="" className="anime-img" />
                             <p className="anime-name">{anime.name}</p>

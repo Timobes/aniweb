@@ -1,10 +1,15 @@
 import { useState } from "react";
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import {clearauth} from '../../../../state/slice/authSlice' 
 
 function Exit() {
     const [data, setdata] = useState([]);
     const nav = useNavigate()
+
+    const status = useSelector((state) => state.auth.value)
+    const dispatch = useDispatch()
 
     const click = () => {
 
@@ -18,7 +23,8 @@ function Exit() {
             .then((response) => {
                 nav('/main')
                 setdata(response.data);
-                window.location.reload()
+                // window.location.reload()
+                dispatch(clearauth())
 
             })
             .catch((error) => {

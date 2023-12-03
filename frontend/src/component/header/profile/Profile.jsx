@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Bookmarks from "../../main/bookmarks/Bookmarks";
-import {Link, useParams} from "react-router-dom"
+// import {Link, useParams} from "react-router-dom"
 import Exit from "./auth-Reg/Exit";
+import { useSelector} from 'react-redux'
+
 
 function Profile() {
-    const {id} = useParams()
+    // const {id} = useParams()
     const [data, setData] = useState([])
-    
-    
+    const status = useSelector((state) => state.auth.value)
+
     useEffect(() => {
         axios
             .get(`http://localhost:8080/api/user/profile`, {
@@ -25,11 +27,11 @@ function Profile() {
     }, [])
     
     console.log('data = ',data)
-    
+
     return (  
         <div>
             {
-                data != null
+                status 
                     ? 
                         <>
                             <h2>Имя: {data.username}</h2>
@@ -38,11 +40,10 @@ function Profile() {
 
                             <Exit />
                             <Bookmarks />
-
                         </>
                     :
                         <h1>Вы не вошли в аккаунт!</h1>
-                            
+
             }
         </div>
     );

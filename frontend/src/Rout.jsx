@@ -13,6 +13,7 @@ import Review from "./component/main/anime/Review";
 import Addbook from "./component/main/bookmarks/Addbook";
 import Bookmarks from "./component/main/bookmarks/Bookmarks";
 import Anitags from "./component/main/anime/Anitags";
+import Users from "./component/main/user/Users"
 
 function Rout() {
     return (  
@@ -36,6 +37,8 @@ function Rout() {
                     <Route path="/auth" element={<Auth />} />
 
                     <Route path="/bookmarks" element={<Bookmarks />} />
+
+                    <Route path="/users" element={<Users />} />
                     
                     <Route path="*" element={<h1>Error!!!</h1>}/>
                 </Route>

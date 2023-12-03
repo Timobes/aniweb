@@ -18,7 +18,11 @@ class regController {
 
                 // else {
                     const newUser = await db.query(`INSERT INTO users (username, email, passwords, bio, dates) values ($1, $2, $3, $4, $5)`, [username, email, passwords, bio, dates]) 
+                    const setcook = await db.query('SELECT id FROM users WHERE email = $1 AND passwords = $2', [email, passwords])
+                    // console.log(setcook)
+                    res.cookie('userid', setcook.rows[0].id)
                     res.json('Вы зарегистрировались!')
+
                 // }
             }
 
@@ -42,6 +46,7 @@ class regController {
                 
                 res.clearCookie('userid');
                 res.cookie('userid', id.rows[0].id)
+                console.log('вы авторизованы!')
                 res.json('Добро пожаловать!')
 
             } else {
@@ -50,7 +55,8 @@ class regController {
         }
         catch(err) {
             console.log(err)
-            res.json("Ошибка")
+            // res.json()
+            res.status(201).send("Ошибка")
         }
     }
 
@@ -58,7 +64,7 @@ class regController {
         const id = req.cookies.userid
         if(id) {
             const username = await db.query('SELECT username FROM users WHERE id = $1 ', [id])
-            // res.json(username)
+            console.log('вход выполнен = ', username)
             res.send(`Hello ${username.rows[0].username}!`);
         }
         else {

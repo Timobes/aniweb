@@ -1,11 +1,20 @@
 import { useState } from "react";
 import axios from 'axios'
+import { useSelector, useDispatch } from 'react-redux'
+import {addauth} from '../../../../state/slice/authSlice' 
+// import { useNavigate } from "react-router-dom";
 
 function Auth() {
 
     const [data, setData] = useState([])
     const [email, setEmail] = useState()
     const [passwords, setPasswords] = useState()
+
+    const status = useSelector((state) => state.auth.value)
+    const dispatch = useDispatch()
+
+    console.log('status = ',status)
+    // const nav = useNavigate()
 
         const submit = () => { 
             axios
@@ -19,9 +28,14 @@ function Auth() {
                 {withCredentials: true})
 
                 .then((response) => {
-                    window.location.reload()
-
+                    // window.location.reload()
+                    // nav('/profile')
                     setData(response.data)
+                    console.log(response)
+
+                    if(response.status === 200) {
+                        dispatch(addauth())
+                    }
                 })
 
                 .catch((error) =>  {
@@ -32,13 +46,20 @@ function Auth() {
       
     return (  
         <div className="">
-            <input type="email" placeholder="email" onChange={e => setEmail(e.target.value)} /> <br />
-            <input type="password" placeholder="password" onChange={e => setPasswords(e.target.value)} /> <br />
-            <div className="" >
-                {data}
-            </div>
+            {status 
+                ?
+                    <h1>Вы авторизованы!</h1>
+                :                     
+                    <div className="">
+                        <input type="email" placeholder="email" onChange={e => setEmail(e.target.value)} /> <br />
+                        <input type="password" placeholder="password" onChange={e => setPasswords(e.target.value)} /> <br />
+                        <div className="" >
+                            {data}
+                        </div>
 
-            <input type="button" value={"отправить"} onClick={submit}/>
+                        <input type="button" value={"отправить"} onClick={submit}/>
+                    </div>
+            }
         </div>
     );
 }
