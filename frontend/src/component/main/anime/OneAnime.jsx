@@ -26,9 +26,10 @@ function OneAnime() {
             })
     }, [])
 
+
     return (  
         <>       
-            <main className="oneanime">
+            <div className="oneanime">
                 <div className="aniname">{data.name}</div>
                     
                 <img src={data.animeurl} alt="" className="animg" />
@@ -63,7 +64,7 @@ function OneAnime() {
                 <div className="rew-h">Отзывы</div>
                 <Review />
 
-            </main>
+            </div>
         </>
     );
 }
